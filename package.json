@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
@@ -48,9 +49,9 @@
     "whatwg-fetch": "2.0.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "start": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/start.js",
+    "build": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/build.js",
+    "test": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -77,7 +78,9 @@
     }
   },
   "babel": {
-    "plugins": ["react-relay"],
+    "plugins": [
+      "react-relay"
+    ],
     "presets": [
       "react-app"
     ]
