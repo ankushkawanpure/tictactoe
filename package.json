@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router": "^4.1.1"
+    "react-router": "^3.0.2"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
@@ -49,9 +49,9 @@
     "whatwg-fetch": "2.0.2"
   },
   "scripts": {
-    "start": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/start.js",
-    "build": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/build.js",
-    "test": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/ciyn8rxsl3bs201324sbzf0hx node scripts/test.js --env=jsdom"
+    "start": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cj2pdk3sxp7480175qw76eo6h node scripts/start.js",
+    "build": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cj2pdk3sxp7480175qw76eo6h node scripts/build.js",
+    "test": "GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cj2pdk3sxp7480175qw76eo6h node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
