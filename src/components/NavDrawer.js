@@ -38,6 +38,7 @@ class NavDrawer extends Component {
                     open={this.state.open}
                     width={this.state.width}
                 >
+
                     <div style={{
                         height: '200px',
                         width: '100%',
@@ -45,13 +46,17 @@ class NavDrawer extends Component {
                     }}>
                         Login container
                     </div>
+
                     <Link to='/' >
                         <MenuItem onTouchTap={this.toggleDrawer} primaryText='play'/>
                     </Link>
+
                     <Divider/>
+
                     <Link to="/profile">
                         <MenuItem onTouchTap={this.toggleDrawer} primaryText='profile'/>
                     </Link>
+
                 </Drawer>
 
                 <NavToggleButton
@@ -59,7 +64,6 @@ class NavDrawer extends Component {
                     width={this.state.width}
                     open={this.state.open}
                 />
-
 
             </div>
         )
