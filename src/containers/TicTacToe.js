@@ -7,6 +7,21 @@ import {Board, Squares} from '../styled/TicTacToe';
 
 class TicTacToe extends Component {
 
+    constructor(props) {
+        super(props);
+        //generate combos dynamically to check for the win
+        this.combos = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
+    }
+
     state = {
         rows: 3,
         gameState: new Array(9).fill(false),
@@ -41,14 +56,70 @@ class TicTacToe extends Component {
 
     }
 
-    move = (marker, index) => {
-        console.log('in Move', marker, index);
+    move = (index, marker) => {
+        this.setState((prevState, prop) => {
+            let {gameState, yourTurn, gameOver, winner} = prevState;
+            //change the turn
+            yourTurn = !yourTurn;
+
+            gameState.splice(index, 1, marker);
+            let foundWin  = this.winChecker(gameState);
+
+            if(foundWin) {
+                winner = gameState[foundWin[0]];
+            }
+
+            if(foundWin || !gameState.includes(false)) {
+                gameOver = true;
+            }
+
+            if(!yourTurn && !gameOver) {
+                this.makeAiMove(gameState);
+            }
+            return {
+                gameState,
+                yourTurn,
+                gameOver,
+                win: foundWin || false,
+                winner
+            }
+
+        })
+
     };
 
-    makeAiMove = () => {
+    makeAiMove = (gameState) => {
+        let otherMark = this.state.otherMark;
+
+        let openSquares = [];
+        gameState.forEach((square, index) => {
+            if(!square) {
+                openSquares.push(index);
+            }
+        })
+
+        let aiMove = openSquares[this.random(0,openSquares.length)];
+
+            setTimeout(() => {
+            this.move(aiMove, otherMark);
+        }, 1000);
+
 
     };
 
+    random = (min, max) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max- min)) + min
+    };
+
+    winChecker = (gameState) => {
+        let combos = this.combos;
+        return combos.find( (combo) => {
+            let [a, b, c] = combo;
+            return (gameState[a] === gameState[b] && gameState[a] === gameState[c] && gameState[a])
+        })
+    };
 
     render() {
         let {size,
