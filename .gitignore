@@ -17,5 +17,5 @@ yarn-debug.log*
 
 
 #webstorm
-#.idea/
-
+/.idea
+/.idea/workspace.xml
