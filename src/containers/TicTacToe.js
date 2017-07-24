@@ -1,11 +1,12 @@
 /**
  * Created by Ankush on 5/13/17.
  */
-import React, {Component} from 'react';
+import React from 'react';
 import {Stage} from 'react-konva';
 import {Board, Squares} from '../styled/TicTacToe';
+import ticAiUtil from './ticAiUtil';
 
-class TicTacToe extends Component {
+class TicTacToe extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,6 +21,7 @@ class TicTacToe extends Component {
             [0, 4, 8],
             [2, 4, 6]
         ]
+        this.ticAiUtil = new ticAiUtil();
     }
 
     state = {
@@ -85,26 +87,34 @@ class TicTacToe extends Component {
             }
 
         })
-
     };
 
     makeAiMove = (gameState) => {
         let otherMark = this.state.otherMark;
 
-        let openSquares = [];
-        gameState.forEach((square, index) => {
-            if(!square) {
-                openSquares.push(index);
-            }
-        })
+        // let openSquares = [];
+        // gameState.forEach((square, index) => {
+        //     if(!square) {
+        //         openSquares.push(index);
+        //     }
+        // })
+        // console.log(gameState);
+        // let aiMove = openSquares[this.random(0,openSquares.length)];
+        //     setTimeout(() => {
+        //     this.move(aiMove, otherMark);
+        // }, 1000);
+        console.log('initial state', gameState);
+        gameState = this.ticAiUtil.denormalizeBoard(gameState);
+        console.log('normalize state', gameState);
+        let aiMove = this.ticAiUtil.computer_move(gameState);
+        gameState = this.ticAiUtil.normalizeBoard(gameState);
+        console.log('Ai move', aiMove);
+        // console.log('Ai move 2', aiMove2);
 
-        let aiMove = openSquares[this.random(0,openSquares.length)];
-
-            setTimeout(() => {
-            this.move(aiMove, otherMark);
-        }, 1000);
-
-
+        // this.move(aiMove, otherMark);
+        setTimeout(() => {
+                this.move(aiMove, otherMark);
+                }, 1000)
     };
 
     random = (min, max) => {
@@ -154,6 +164,7 @@ class TicTacToe extends Component {
             </div>
         )
     }
+
 
 
 }
