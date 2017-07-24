@@ -20,7 +20,7 @@ class TicTacToe extends React.Component {
             [2, 5, 8],
             [0, 4, 8],
             [2, 4, 6]
-        ]
+        ];
         this.ticAiUtil = new ticAiUtil();
     }
 
@@ -113,8 +113,8 @@ class TicTacToe extends React.Component {
 
         // this.move(aiMove, otherMark);
         setTimeout(() => {
-                this.move(aiMove, otherMark);
-                }, 1000)
+            this.move(aiMove, otherMark);
+        }, 1000)
     };
 
     random = (min, max) => {
@@ -164,9 +164,6 @@ class TicTacToe extends React.Component {
             </div>
         )
     }
-
-
-
 }
 
 
